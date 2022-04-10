@@ -1,1 +1,27 @@
+1)Is Integer Array?
 
+function isIntArray(arr) {
+  return Array.isArray(arr) && arr.every(function (x) { return Math.floor(x) === x });
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+2)Coding Meetup #15 - Higher-Order Functions Series - Find the odd names
+
+function findOddNames(list) {
+  let newArr = [];
+  let lastArr = [];
+
+  for (let i=0; i<list.length; i++) {
+      newArr.push(list[i].firstName
+        .split('')
+        .map(val => val.charCodeAt(0))
+        .reduce((acc, val) => acc + val));
+  }
+
+  for (let i = 0; i<newArr.length; i++) {
+      if (newArr[i] % 2 === 1) {
+          lastArr.push(list[i]);
+      }
+    }
+  return lastArr;
+}
