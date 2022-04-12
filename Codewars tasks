@@ -1,11 +1,13 @@
-1)Is Integer Array?
+1) Is Integer Array?
 
 function isIntArray(arr) {
   return Array.isArray(arr) && arr.every(function (x) { return Math.floor(x) === x });
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-2)Coding Meetup #15 - Higher-Order Functions Series - Find the odd names
+2) Coding Meetup #15 - Higher-Order Functions Series - Find the odd names
+Write a function that when executed as findOddNames(list1) returns only the developers where 
+if you add the ASCII representation of all characters in their first names, the result will be an odd number
 
 function findOddNames(list) {
   let newArr = [];
@@ -25,3 +27,165 @@ function findOddNames(list) {
     }
   return lastArr;
 }
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+3) Where is my parent!?(cry)
+Test.expect("BbbEeee" == findChildren("beeeEBb"));
+Test.expect("EeeUuuWww" == findChildren("uwwWUueEe"));
+
+function findChildren(dancingBrigade){
+ let finish = [];
+  let arr = (dancingBrigade.split('')
+      .map(val => val.toLowerCase())
+      .sort());
+  
+
+  for (let i=0; i<arr.length; i++) {
+    if (arr[i-1] != arr[i]) {
+      finish.push(arr[i].toUpperCase());
+    } else {
+      finish.push(arr[i]);
+    }
+  }
+  return finish.join('');
+};
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+4) Definition (Primorial Of a Number)
+Output Examples:
+1- numPrimorial (3) ==> return (30)
+Explanation:
+Since the passed number is (3) ,Then the primorial should obtained by multiplying 2 * 3 * 5 = 30 .
+2- numPrimorial (5) ==> return (2310)
+Explanation:
+Since the passed number is (5) ,Then the primorial should obtained by multiplying 2 * 3 * 5 * 7 * 11 = 2310 .
+
+let counter = 0;
+let val = 0;
+let arr = [];
+let res;
+
+function numPrimorial(n){
+  
+  for (let i = 2; ; i++) {
+    for (let j = i; j > 1; j--) {
+      if (i % j === 0 && i != j) {
+        val++;
+      }
+    }
+    
+    if (val === 0) {
+      arr.push(i);
+      counter++;
+    }
+    
+    val = 0;
+    
+    if (counter === n) {
+      let res = arr.reduce((acc, val) => acc*val, 1);
+      arr.length = 0;
+      counter = 0;
+      return res;
+    }
+  }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+5)New Cashier Does Not Know About Space or Shift
+All the orders they create look something like this:
+
+"milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza"
+
+The kitchen staff are threatening to quit, because of how difficult it is to read the orders.
+Their preference is to get the orders as a nice clean string with spaces and capitals like so:
+
+"Burger Fries Chicken Pizza Pizza Pizza Sandwich Milkshake Milkshake Coke"
+
+
+function getOrder(input) {
+  
+  let newInput = input.split('');
+  let emptyArr = [];
+  let finalArr = [];
+  for (let i=0; i<newInput.length; i++) {
+    
+    emptyArr.push(newInput[i]);
+    
+    if (arr.includes(emptyArr.join(''))) {
+     
+      finalArr.push(emptyArr.join(''))
+      console.log(emptyArr);
+      console.log(finalArr);
+      emptyArr.length = 0;    
+    };
+    
+  }
+  
+  for (let i = 0; i < finalArr.length; i++) {
+    finalArr[i] = finalArr[i][0].toUpperCase() + finalArr[i].substr(1);
+  };
+  return finalArr.sort().join(' ');
+}
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! more correct answer
+const getOrder = input => {
+  const menu = ['Burger','Fries','Chicken','Pizza','Sandwich','Onionrings','Milkshake','Coke'];
+  let orders = input.match(new RegExp(menu.join('|'), 'gi'))
+                    .map(item => item[0].toUpperCase() + item.slice(1))
+                    .sort((a,b) => menu.indexOf(a) - menu.indexOf(b));
+  return orders.join(' ');
+};
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+6)Who likes it?
+[]                                -->  "no one likes this"
+["Peter"]                         -->  "Peter likes this"
+["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+
+function likes(names) {
+  if (names.length == 0) {
+    return 'no one likes this'
+  }
+  if (names.length == 1) {
+    return names.join().concat(' likes this');
+  }
+  if (names.length == 2) {
+    return names[0].concat(' and ').concat(names[1]).concat(' like this');
+  }
+  if (names.length == 3) {
+    return names[0].concat(', ').concat(names[1]).concat(' and ').concat(names[2]).concat(' like this');
+  } else {
+    return names[0].concat(', ').concat(names[1]).concat(' and ').concat(names.length-2).concat(' others like this');
+  }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+7)Sort the odd
+
+function sortArray(array) {
+  var odds = [];
+  //loop, if it's odd, push to odds array
+  for (var i = 0; i < array.length; ++i) {
+    if (array[i]%2 !== 0) {
+      odds.push(array[i]);
+    }
+  }
+  //sort odds from smallest to largest
+  odds.sort(function(a,b){
+    return a-b;
+  });
+  
+  //loop through array, replace any odd values with sorted odd values
+  for (var j = 0; j < array.length; ++j) {
+    if (array[j]%2 !== 0) {
+      array[j] = odds.shift();
+    }
+  }
+  
+ return array;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+8)
