@@ -225,7 +225,7 @@ function printerError(s) {
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-10)Are they the "same"?
+10)Are they the "same"? 6kyu
 a1 = [121, 144, 19, 161, 19, 144, 19, 11];
 a2 = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19];
 Test.assertEquals(comp(a1, a2), true);
@@ -252,4 +252,69 @@ function comp(array1, array2){
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-11)
+11)Count the smiley faces! 6kyu
+
+//return the total number of smiling faces in the array
+function countSmileys(arr) {
+  if (arr.length === 0) {
+    return 0;
+  };
+  let counter = 0;
+  for (let i=0; i<arr.length; i++) {
+    if (arr[i][0] == ':' || arr[i][0] == ';') {
+      if (arr[i][1] == ')' || arr[i][1] == 'D') {
+        counter++;
+      } else if (arr[i][1] == '-' || arr[i][1] == '~') {
+        if (arr[i][2] == ')' || arr[i][2] == 'D') {
+          counter++;
+        }
+      }
+    }
+  }
+  return counter;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+12)Multiples of 3 or 5 6kyu
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+function solution(number){
+  let arr = [];
+  if (number < 0) {
+    return 0;
+  }
+  for (let i=0; i<number; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      arr.push(i);
+      continue;
+    }
+    if (i % 3 === 0 || i % 5 === 0) {
+      arr.push(i);
+    }
+  }
+  return arr.reduce((acc,val) => acc + val, 0);
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+13)Find the odd int 6kyu
+Given an array of integers, find the one that appears an odd number of times.
+There will always be only one integer that appears an odd number of times.
+
+function findOdd(A) {
+  let counter = 0;
+  for (let i=0; i<A.length; i++) {
+    for (let j=0; j<A.length; j++) {
+      if (A[i] === A[j]) {
+        counter++;
+      }
+    }
+    if (counter % 2 === 1) {
+      return A[i];
+    } else {
+      counter = 0;
+    }
+  }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+14)
