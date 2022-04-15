@@ -317,4 +317,71 @@ function findOdd(A) {
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-14)
+14)Simple Pig Latin 5kyu
+Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+
+function pigIt(str){
+  let arr = str.split(' ');
+  let finalArr = [];
+  let reg = /[a-z]/i;
+  for (let i=0; i<arr.length; i++) {
+    let word = arr[i].split('');
+    let letter = word.splice(0,1);
+    if (reg.test(letter)) {
+      finalArr.push(word.join('').concat(letter, 'ay'));
+    } else {
+      finalArr.push(word.join('').concat(letter));
+    }
+  }
+  return finalArr.join(' ');
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+15)Moving Zeros To The End 5kyu
+
+function moveZeros(arr) {
+  let zeros = arr.filter(val => val === 0);
+  return (arr.filter(val => val !== 0)).concat(zeros);
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+16)Human Readable Time 5kyu
+Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
+
+function humanReadable (seconds) {
+  let hours = Math.floor(seconds / 3600);
+  let minutes = Math.floor(((seconds/3600) - hours) * 60);
+  let secondss = Math.round(((((seconds/3600) - hours) * 60) - minutes) * 60);
+  let arr = [hours, minutes, secondss];
+  let finalArr = [];
+  for (let i=0; i<arr.length; i++) {
+    if (arr[i] < 10) {
+      finalArr.push('0'+ arr[i]);
+    } else finalArr.push(arr[i])
+  }
+  return finalArr.join(':');
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+17)Where my anagrams at? 5kyu
+Write a function that will find all the anagrams of a word from a list.
+You will be given two inputs a word and an array with words.
+You should return an array of all the anagrams or an empty array if there are none.
+
+function anagrams(word, words) {
+  let arrOfWords = [];
+  let sortedWord = word.split('').sort().join('');
+  let finalArr = [];
+  for (let i=0; i<words.length; i++) {
+     arrOfWords.push(words[i].split('').sort().join(''));
+  }
+  for (let i=0; i<words.length; i++) {
+     if (sortedWord === arrOfWords[i]) {
+       finalArr.push(words[i]);
+     }
+  }
+  return finalArr;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+18)
