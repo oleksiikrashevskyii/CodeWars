@@ -223,3 +223,33 @@ function printerError(s) {
   let result = `${matches.length}/${len}`;
   return result;
 }
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+10)Are they the "same"?
+a1 = [121, 144, 19, 161, 19, 144, 19, 11];
+a2 = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19];
+Test.assertEquals(comp(a1, a2), true);
+
+function comp(array1, array2){
+  let counter = 0;
+  console.log(array1, array2);
+  if (!array1 || !array2) {
+    return false;
+  }
+  for (let i=0; i<array1.length; i++) {
+    for (let j=0; j<array2.length; j++) {
+      if (Math.pow(array1[i], 2) === array2[j] ) {
+        array2.splice(j,1);
+        counter++;
+        break;
+      }
+    }
+  }
+  if (counter === array1.length) {
+    return true;
+  }
+  return false;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+11)
