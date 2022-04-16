@@ -384,4 +384,78 @@ function anagrams(word, words) {
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-18)
+18)RGB To Hex Conversion 5kyu
+
+function rgb(r, g, b){
+  return [r,g,b].map(val => {
+    if (val <0) {
+      val = 0;
+    }
+    if (val > 255) {
+      val = 255;
+    }
+    let hex = val.toString(16).toUpperCase();
+    if (hex.length === 1) {
+      return '0' + hex;
+    } else {
+      return hex;
+    }
+  }).join('');
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+19)Weight for weight 5kyu
+For example 99 will have "weight" 18, 100 will have "weight" 1 so in the list 100 will come before 99.
+Given a string with the weights of FFC members in normal order can you give this string ordered by "weights" of these numbers?
+
+function orderWeight(strng) {
+  let sum = 0;
+  let value;
+  let arr = strng.split(' ');
+  for (let i = 0, endI = arr.length-1; i < endI; i++) {
+    for (let j = 0; j < arr.length-1-i; j++) {
+      let elemSum = arr[j].split('').reduce((acc,val) => acc + +val, 0);
+      let nextelemSum = arr[j+1].split('').reduce((acc,val) => acc + +val, 0);
+      console.log(elemSum, nextelemSum);
+        if (elemSum > nextelemSum) {
+            let temp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = temp;
+        } else if (elemSum === nextelemSum) {
+          if (arr[j].split('') > arr[j+1].split('')) {
+            let temp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = temp;
+          }
+        }
+    }
+  }
+  return arr.join(' ');
+}  
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+20)Pete, the baker 5kyu
+Write a function cakes(), which takes the recipe (object) and the available ingredients (also an object) 
+and returns the maximum number of cakes Pete can bake (integer). 
+For simplicity there are no units for the amounts (e.g. 1 lb of flour or 200 g of sugar are simply 1 or 200). 
+Ingredients that are not present in the objects, can be considered as 0.
+
+function cakes(recipe, available) {
+  let arr = [];
+  let valuesRecipe = Object.keys(recipe);
+  let valuesAvailable = Object.keys(available);
+  for (let i=0; i<valuesRecipe.length; i++) {
+    if (available.hasOwnProperty(valuesRecipe[i])) {
+      arr.push(Math.floor((available[valuesRecipe[i]]) / (recipe[valuesRecipe[i]])));
+    } else {
+      return 0;
+    }
+  }
+  return arr.sort((a,b) => a-b)[0];
+}
+
+// Делим каждое значение ключей доступных ресурсов на ключю рецепта с округлением
+// Находим минимальное значение среди полученных результатов и возвращаем
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+21)
