@@ -458,4 +458,55 @@ function cakes(recipe, available) {
 // Находим минимальное значение среди полученных результатов и возвращаем
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-21)
+21)First non-repeating character 5kyu
+
+function firstNonRepeatingLetter(s) {
+  if (s.length === 0) {
+    return ''
+  }
+  let arr = s.toLowerCase().split('');
+  let answer;
+  let counter = 0;
+  for (let i=0; i<s.length; i++) {
+    for (let j=0; j<s.length; j++) {
+      if (arr[i] === arr[j]) {
+        counter++;
+      }
+    }
+    if (counter === 1) {
+      answer = s[i];
+      break;
+    }
+    counter = 0;
+  }
+  if (answer === undefined) {
+    return ''
+  }
+  return answer;
+}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+22)The Hashtag Generator 5kyu
+" Hello there thanks for trying my Kata"  =>  "#HelloThereThanksForTryingMyKata"
+"    Hello     World   "                  =>  "#HelloWorld"
+""                                        =>  false
+
+function generateHashtag (str) {
+  let reg = /[a-z]/gi;
+  console.log(str.length);
+  if (str.match(reg) === null) {
+    return false;  
+  }
+  if (str.length === 0 || str.match(reg).length > 139) {
+    return false;
+  }
+  str = str.replace(/ +/g, ' ').trim();
+  console.log(str);
+  let arr = str.split(' ').map(val => val[0].toUpperCase() + val.split('').splice(1).join(''));
+  console.log('#' + arr.join(''));
+  return '#' + arr.join('');
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+23)
