@@ -564,4 +564,35 @@ function high(x) {
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-24)
+24)Count the number of Duplicates 6kyu
+Write a function that will return the count of distinct case-insensitivealphabetic
+characters and numeric digits that occur more than once in the input string.
+
+function duplicateCount(text){
+  return text
+    .toLowerCase()
+    .split('')
+    .sort()
+    .filter((val,i,arr) => arr[i] === arr[i+1])
+    .filter((val,i,arr) => arr[i] !== arr[i+1])
+    .length
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+25)Meeting 6kyu
+Could you make a program that
+makes this string uppercase
+gives it sorted in alphabetical order by last name.
+
+function meeting(s) {
+  return '(' + s
+    .toUpperCase()
+    .split(';')
+    .map(val => val.split(':').reverse())
+    .sort()
+    .map(val => val.join(', '))
+    .join(')(') 
+    + ')';
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
