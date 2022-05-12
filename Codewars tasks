@@ -596,3 +596,46 @@ function meeting(s) {
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------
+26)Good vs Evil 6kyu
+Middle Earth is about to go to war.
+The forces of good will have many battles with the forces of evil.
+Different races will certainly be involved.
+Each race has a certain worth when battling against others.
+On the side of good we have the following races, with their associated worth
+
+function goodVsEvil(good, evil){
+  let goodArr = good.split(' ');
+  let goodPotential = [];
+  goodPotential.push(goodArr[0]*1);
+  goodPotential.push(goodArr[1]*2);
+  goodPotential.push(goodArr[2]*3);
+  goodPotential.push(goodArr[3]*3);
+  goodPotential.push(goodArr[4]*4);
+  goodPotential.push(goodArr[5]*10);
+
+  let evilArr = evil.split(' ');
+  let evilPotential = [];
+  evilPotential.push(evilArr[0]*1);
+  evilPotential.push(evilArr[1]*2);
+  evilPotential.push(evilArr[2]*2);
+  evilPotential.push(evilArr[3]*2);
+  evilPotential.push(evilArr[4]*3);
+  evilPotential.push(evilArr[5]*5);
+  evilPotential.push(evilArr[6]*10);
+  
+  let goodWorth = goodPotential.reduce((acc,val) => acc + val, 0);
+  let evilWorth = evilPotential.reduce((acc,val) => acc + val, 0);
+  console.log(evilWorth);
+  console.log(goodWorth);
+  
+  if (goodWorth > evilWorth) {
+    return 'Battle Result: Good triumphs over Evil';
+  }
+  if (goodWorth < evilWorth) {
+    return 'Battle Result: Evil eradicates all trace of Good';
+  }
+  return 'Battle Result: No victor on this battle field';
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+27)
