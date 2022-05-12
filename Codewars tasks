@@ -638,4 +638,23 @@ function goodVsEvil(good, evil){
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-27)
+27)Data Reverse 6kyu
+A stream of data is received and needs to be reversed.
+Each segment is 8 bits long, meaning the order of these segments needs to be reversed
+
+function dataReverse(data) {
+  let arr = [];
+  console.log(data.length);
+  for (let i=1; i<data.length+1; i++) {
+    arr.push(data[i-1]);
+    if (i % 8 === 0) {
+      arr.push(';')
+    }
+  }
+  let newArr = arr.join('').split(';');
+  newArr.pop();
+  return newArr.reverse().join('').split('').map(val => +val);
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+28)
